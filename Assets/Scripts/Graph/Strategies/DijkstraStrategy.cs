@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Game.Enums;
+using Graph.Enums;
 using Graph.Models;
 using Graph.Strategies.Base;
 using Utils;
@@ -30,7 +30,7 @@ namespace Graph.Strategies
                     continue;
                 }
 
-                if (current.type == targetType)
+                if (current.Type == targetType)
                 {
                     return ReconstructPath(current, previous);
                 }

@@ -1,4 +1,5 @@
 using Game.Installers;
+using Graph.Installers;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,7 @@ namespace Infrastructure
     {
         public override void InstallBindings()
         {
+            Install<GraphInstaller>();
             Install<GameInstaller>();
         }
     

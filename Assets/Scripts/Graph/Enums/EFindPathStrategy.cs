@@ -1,4 +1,4 @@
-namespace Game.Enums
+namespace Graph.Enums
 {
     public enum EFindPathStrategy : byte
     {

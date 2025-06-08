@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Game.Enums;
+using Graph.Enums;
 using Graph.Models;
 
 namespace Graph.Interfaces

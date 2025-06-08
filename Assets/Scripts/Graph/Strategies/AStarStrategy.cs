@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.Enums;
+using Graph.Enums;
 using Graph.Models;
 using Graph.Strategies.Base;
 using UnityEngine;
@@ -13,13 +13,13 @@ namespace Graph.Strategies
         private Vector3 _targetPosition;
         public override List<NodeModel> FindPath(NodeModel startNode, ENodeType targetType, IReadOnlyDictionary<NodeModel, List<EdgeModel>> edgeMap)
         {
-            NodeModel targetNode = edgeMap.Keys.FirstOrDefault(nodeModel => nodeModel.type == targetType);
+            NodeModel targetNode = edgeMap.Keys.FirstOrDefault(nodeModel => nodeModel.Type == targetType);
 
-            if (!targetNode)
+            if (targetNode == null)
             {
                 return null;
             }
-            _targetPosition = targetNode.transform.position;
+            _targetPosition = targetNode.Position;
 
             Dictionary<NodeModel, float> gScore = new();
             Dictionary<NodeModel, float> fScore = new();
@@ -45,7 +45,7 @@ namespace Graph.Strategies
                     continue;
                 }
 
-                if (current.type == targetType)
+                if (current.Type == targetType)
                 {
                     return ReconstructPath(current, cameFrom);
                 }
@@ -70,7 +70,7 @@ namespace Graph.Strategies
         
         private float Heuristic(NodeModel node)
         {
-            return Vector3.Distance(node.transform.position, _targetPosition);
+            return Vector3.Distance(node.Position, _targetPosition);
         }
     }
 }
