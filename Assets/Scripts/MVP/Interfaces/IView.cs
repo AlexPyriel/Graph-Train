@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-
 namespace MVP.Interfaces
 {
     public interface IView
