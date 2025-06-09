@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Configs;
+using Game.Interfaces;
 using Graph.Interfaces;
 using Graph.Models;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace Game.Views
             _graphModel = graphModel;
         }
 
-        public void SpawnTrains()
+        public void SpawnTrains(IGameView view)
         {
             _spawnedTrains ??= new List<Train>();
             
@@ -38,7 +39,7 @@ namespace Game.Views
                     return;
                 }
 
-                train.Initialize(startNode, _graphModel.EdgeMap, config);
+                train.Initialize(startNode, _graphModel.EdgeMap, view, config);
                 _spawnedTrains.Add(train);
             });
 
