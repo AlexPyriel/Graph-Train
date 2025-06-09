@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Node Mine Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6618558919506020111, guid: 60923545da4df41d69ba105a55fca153, type: 3}
+      propertyPath: _multiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
