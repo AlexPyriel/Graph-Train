@@ -1305,7 +1305,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8472dc6f152c4b93994db99df34be4a, type: 2}
   - {fileID: 11400000, guid: 79e00bce505a54d17a4c494161a164b2, type: 2}
   - {fileID: 11400000, guid: 6bdf08e99e4a946539749f43bac91122, type: 2}
-  - {fileID: 11400000, guid: 77adb8effacdb4ba0bd6f9abd7d6c2bd, type: 2}
   _trainPrefabs:
   - {fileID: 6560186977851144582, guid: a31d834ef0f31460db3b37feda7e0cba, type: 3}
   - {fileID: 7298802868210928119, guid: f4a0a8a3392374026a357ca651db351c, type: 3}

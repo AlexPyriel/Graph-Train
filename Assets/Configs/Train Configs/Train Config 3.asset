@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a791f0bee440c9b266f1c30f1c4a9b, type: 3}
   m_Name: Train Config 3
   m_EditorClassIdentifier: 
-  _findPathStrategy: 2
+  _findPathStrategy: 3
   _movementSpeed: 50
   _baseMiningTime: 10
