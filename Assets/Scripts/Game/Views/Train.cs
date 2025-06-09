@@ -10,12 +10,13 @@ namespace Game.Views
 {
     public class Train : MonoBehaviour
     {
+        [SerializeField] private float _movementSpeed;
+        [SerializeField] private float _baseMiningTime;
+        
         private IReadOnlyDictionary<NodeModel, List<EdgeModel>> _edgeMap;
         private IFindPathStrategy _strategy;
         private IGameView _gameView;
 
-        private float _movementSpeed;
-        private float _baseMiningTime;
 
         private NodeModel _currentNode;
         private NodeModel _targetNode;
