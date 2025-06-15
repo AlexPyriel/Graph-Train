@@ -19,7 +19,7 @@ namespace SceneLoader
         private readonly SceneLoadingEvents _sceneLoadingEvents;
 
         private CancellationTokenSource _cancellationTokenSource;
-        private AsyncOperationHandle<SceneInstance> _currentSceneInstanceHandle;
+        private AsyncOperationHandle<SceneInstance> _currentSceneHandle;
 
         public SceneLoaderService(SceneLoadingEvents sceneLoadingEvents)
         {
@@ -50,9 +50,9 @@ namespace SceneLoader
                 throw new InvalidOperationException($"Failed to load scene: {sceneType}");
             }
 
-            ReleaseCurrentSceneIfValid();
+            ReleaseSceneIfValid(_currentSceneHandle);
 
-            _currentSceneInstanceHandle = targetSceneHandle;
+            _currentSceneHandle = targetSceneHandle;
             SceneInstance targetSceneInstance = targetSceneHandle.Result;
 
             await ActivateAndSetActive(targetSceneInstance);
@@ -78,7 +78,7 @@ namespace SceneLoader
 
             await SceneManager.UnloadSceneAsync(currentScene);
 
-            ReleaseCurrentSceneIfValid();
+            ReleaseSceneIfValid(_currentSceneHandle);
 
             AssetReference targetSceneReference = _sceneLoaderConfig.GetSceneReference(sceneType);
             AsyncOperationHandle<SceneInstance> targetSceneHandle = targetSceneReference.LoadSceneAsync(LoadSceneMode.Additive, false);
@@ -90,16 +90,13 @@ namespace SceneLoader
                 throw new InvalidOperationException($"Failed to load scene: {sceneType}");
             }
 
-            _currentSceneInstanceHandle = targetSceneHandle;
+            _currentSceneHandle = targetSceneHandle;
             SceneInstance targetSceneInstance = targetSceneHandle.Result;
 
             await ActivateAndSetActive(targetSceneInstance);
             await SceneManager.UnloadSceneAsync(loadingScene);
 
-            if (loadingSceneReference.IsValid())
-            {
-                Addressables.Release(loadingSceneReference);
-            }
+            ReleaseSceneIfValid(loadingSceneHandle);
 
             _sceneLoadingEvents.InvokeProgress(1f);
         }
@@ -124,11 +121,11 @@ namespace SceneLoader
             }
         }
 
-        private void ReleaseCurrentSceneIfValid()
+        private void ReleaseSceneIfValid(AsyncOperationHandle<SceneInstance> handle)
         {
-            if (_currentSceneInstanceHandle.IsValid())
+            if (handle.IsValid())
             {
-                Addressables.Release(_currentSceneInstanceHandle);
+                Addressables.Release(handle);
             }
         }
 
