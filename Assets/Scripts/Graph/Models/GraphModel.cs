@@ -15,7 +15,7 @@ namespace Graph.Models
         public void Initialize(IReadOnlyList<EdgeModel> edges)
         {
             _edgeMap.Clear();
-            
+
             foreach (EdgeModel edge in edges)
             {
                 _edgeMap.TryAdd(edge.NodeA, new List<EdgeModel>());

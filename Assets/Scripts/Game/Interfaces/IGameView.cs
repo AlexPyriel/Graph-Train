@@ -11,5 +11,6 @@ namespace Game.Interfaces
         public void AddResources(float multiplier);
         
         public IObservable<Unit> RestartButtonClicked { get; }
+        public IObservable<Unit> TitleButtonClicked { get; }
     }
 }
