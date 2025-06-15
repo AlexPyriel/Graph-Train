@@ -12,7 +12,7 @@ namespace Game.Views
     {
         [SerializeField] private float _movementSpeed;
         [SerializeField] private float _baseMiningTime;
-        
+
         private IReadOnlyDictionary<NodeModel, List<EdgeModel>> _edgeMap;
         private IFindPathStrategy _strategy;
         private IGameView _gameView;
@@ -81,7 +81,7 @@ namespace Game.Views
                 _currentNode.Position,
                 _targetNode.Position,
                 Mathf.Clamp01(fraction));
-            
+
             Vector3 direction = _targetNode.Position - _currentNode.Position;
 
             if (direction != Vector3.zero)

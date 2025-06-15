@@ -12,6 +12,7 @@ namespace Game.Views
     {
         [Header("UI")]
         [SerializeField] private Button _restartButton;
+        [SerializeField] private Button _titleButton;
         [SerializeField] private TextMeshProUGUI _totalResourcesLabel;
         [Space]
         [SerializeField] private TrainSpawner _trainSpawner;
@@ -20,6 +21,7 @@ namespace Game.Views
         private string _totalResourcesLabelTemplate;
 
         public IObservable<Unit> RestartButtonClicked => _restartButton.OnClickAsObservable();
+        public IObservable<Unit> TitleButtonClicked => _titleButton.OnClickAsObservable();
 
         public void Initialize()
         {
